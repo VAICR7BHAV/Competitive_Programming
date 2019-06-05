@@ -1,0 +1,121 @@
+from sys import stdin,stdout
+t=int(stdin.readline())
+while(t>0):
+    n,m=map(int,stdin.readline().split())
+    arr=[]
+    for i in range(0,n):
+        s=input()
+        arr.append(s)
+    ans="YES"
+    for i in range(0,n):
+        for j in range(0,m):
+            if(arr[i][j]=='#'):
+                up=False
+                down=False
+                right=False
+                left=False
+                d1=False
+                d2=False
+                d3=False
+                d4=False
+                if(i==0):
+                    up=True
+                else:
+                    if(i==1):
+                        up=False
+                    else:
+                        if(i-2>=0):
+                            if(arr[i-2][j]!='#' and arr[i-1][j]):
+                                up=True
+                            else:
+                                up=False
+                        else:
+                            up=True
+                if(i==n-1):
+                    down=True
+                else:
+                    if(i==n-2):
+                        down=False
+                    else:
+                        if(i+2<n):
+                            if(arr[i+2][j]!='#' and arr[i+1][j]!='#'):
+                                down=True
+                            else:
+                                down=False
+                        else:
+                            down=True
+                if(j==0):
+                    left=True
+                else:
+                    if(j==1):
+                        left=False
+                    else:
+                        if(j-2>=0):
+                            if(arr[i][j-2]!='#' and arr[i][j-1]!='#'):
+                                left=True
+                            else:
+                                left=False
+                        else:
+                            left=True
+                if(j==m-1):
+                    right=True
+                else:
+                    if(j==m-2):
+                        right=False
+                    else:
+                        if(j+2<m):
+                            if(arr[i][j+2]!='#' and arr[i][j+1]!='#'):
+                                right=True
+                            else:
+                                right=False
+                        else:
+                            right=False
+                if(i-1>=0):
+                    if(j-1>=0):
+                        if(arr[i-1][j-1]!='#'):
+                            d1=True
+                        else:
+                            d1=False
+                    else:
+                        d1=True
+                else:
+                    d1=True
+                if(i-1>0):
+                    if(j+1<m):
+                        if(arr[i+1][j+1]!='#'):
+                            d2=True
+                        else:
+                            d2=False
+                    else:
+                        d2=True
+                else:
+                    d2=True
+                if(i+1<n):
+                    if(j-1>=0):
+                        if(arr[i+1][j-1]!='#'):
+                            d3=True
+                        else:
+                            d3=False
+                    else:
+                        d3=True
+                else:
+                    d3=True
+                if(i+1<n):
+                    if(j+1<m):
+                        if(arr[i+1][j+1]!='#'):
+                            d4=True
+                        else:
+                            d4=False
+                    else:
+                        d4=False
+                else:
+                    d4=False
+                if(right and left and up and down and d1 and d2 and d3 and d4):
+                    ans="YES"
+                else:
+                    ans="NO"
+                    break
+        if(ans=="NO"):
+            break
+    print(ans)
+    t-=1

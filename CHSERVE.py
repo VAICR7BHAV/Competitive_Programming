@@ -1,0 +1,23 @@
+from sys import stdin,stdout
+t=int(stdin.readline())
+while(t>0):
+    p1,p2,k=map(int,stdin.readline().split())
+    sum=p1+p2
+    quo=sum//k
+    rem=sum%k
+    ans=0
+    if(rem==0):
+        if(quo%2!=0):
+            ans=1
+        else:
+            ans=0
+    else:
+        if(quo%2==0):
+            ans=0
+        else:
+            ans=1
+    if(ans==1):
+        stdout.write("COOK\n")
+    else:
+        stdout.write("CHEF\n")
+    t-=1
